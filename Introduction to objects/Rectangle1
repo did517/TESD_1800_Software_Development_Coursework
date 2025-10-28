@@ -1,0 +1,37 @@
+public class Rectangle1 {
+    private double width;
+    private double height;
+
+public Rectangle1(){
+    width = 1;
+    height =1;
+}
+public Rectangle1(double width, double height){
+this.width = width;
+this.height = height;
+}
+double getArea(){
+    return width * height;
+}
+double getPerimeter(){
+    return 2* (width + height);
+}
+public void setWidth(double newWidth){
+    this.width = newWidth;
+}
+public void setHeight(double newHeight){
+    this.height = newHeight;
+}
+}
+
+
+
+public class Rectangle1Test {
+    public static void main(String [] args){
+        double width =1;
+        double height =1;
+        Rectangle1 r = new Rectangle1(width, height);
+        System.out.println("The recangle's area :" + r.getArea());
+        System.out.println("The rectangle's perimeter :" + r.getPerimeter()); 
+    }
+}
