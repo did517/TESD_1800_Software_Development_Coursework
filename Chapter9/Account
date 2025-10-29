@@ -1,0 +1,75 @@
+import java.util.Date;
+
+public class Account {
+    private int id;
+    private double balance;
+    private double annualInterestRate;
+    private Date dateCreated;
+    public Account(int id, double balance , double annualInterestRate){
+        this.id=id;
+        this.balance=balance;
+        this.annualInterestRate= annualInterestRate;
+        dateCreated=new Date();
+    }
+    public Account(){
+        id =1122;
+        balance =20000;
+        annualInterestRate=4.5;
+        dateCreated= new Date();
+    }
+    public int getId(){
+        return id;
+    }
+    public double getBalance(){
+        return balance;
+    }
+    public double getAnnualInterestRate(){
+        return annualInterestRate;
+    }
+    public Date getDateCreated(){
+        return dateCreated;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+    public void setAnnualInterestRate(double annualInterestRate) {
+        this.annualInterestRate = annualInterestRate;
+    }
+    double getMonthlyInterestRate(){
+        return annualInterestRate/12;
+    }
+    double MonthlyInterest(){
+        return balance * (annualInterestRate/1200);
+    }
+    double withdraw(double amount){
+        return balance -=amount;
+    }
+    double withdraw = 2500;
+    double deposit(double amount){
+        return balance += amount;
+    }
+    double deposit = 3000;
+
+
+## CODE TEST
+
+
+public class AccountTest {
+   public AccountTest() {
+   }
+
+   public static void main(String[] var0) {
+      short var1 = 1122;
+      double var2 = 20000.0;
+      double var4 = 4.5;
+      Account var6 = new Account(var1, var2, var4);
+      System.out.println("Account Balance : " + var6.getBalance());
+      System.out.println("Account Monthly interest :" + var6.MonthlyInterest());
+      System.out.println("Account date created :" + String.valueOf(var6.getDateCreated()));
+   }
+}
+
+}
