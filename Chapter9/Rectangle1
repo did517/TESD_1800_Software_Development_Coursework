@@ -1,0 +1,25 @@
+public class Rectangle1 {
+    private double width;
+    private double height;
+
+public Rectangle1(){
+    width = 1;
+    height =1;
+}
+public Rectangle1(double width, double height){
+this.width = width;
+this.height = height;
+}
+double getArea(){
+    return width * height;
+}
+double getPerimeter(){
+    return 2* (width + height);
+}
+public void setWidth(double newWidth){
+    this.width = newWidth;
+}
+public void setHeight(double newHeight){
+    this.height = newHeight;
+}
+}/
