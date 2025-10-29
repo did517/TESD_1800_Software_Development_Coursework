@@ -22,4 +22,19 @@ public void setWidth(double newWidth){
 public void setHeight(double newHeight){
     this.height = newHeight;
 }
-}/
+}
+
+
+## CODE TEST
+
+
+
+public class Rectangle1Test {
+    public static void main(String [] args){
+        double width =1;
+        double height =1;
+        Rectangle1 r = new Rectangle1(width, height);
+        System.out.println("The recangle's area :" + r.getArea());
+        System.out.println("The rectangle's perimeter :" + r.getPerimeter()); 
+    }
+}
