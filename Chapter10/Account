@@ -1,0 +1,125 @@
+import java.util.Date;
+public class Account {
+    private int id;
+    private double balance;
+    private double annualInterestRate;
+    private Date dateCreated;
+    public Account(int id, double balance , double annualInterestRate){
+        this.id=id;
+        this.balance=balance;
+        this.annualInterestRate= annualInterestRate;
+        dateCreated=new Date();
+    }
+    public Account(){
+        id =1122;
+        balance =20000;
+        annualInterestRate=4.5;
+        dateCreated= new Date();
+    }
+
+    public int getId(){
+        return id;
+    }
+    public double getBalance(){
+        return balance;
+    }
+    public double getAnnualInterestRate(){
+        return annualInterestRate;
+    }
+    public Date getDateCreated(){
+        return dateCreated;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+    public void setAnnualInterestRate(double annualInterestRate) {
+        this.annualInterestRate = annualInterestRate;
+    }
+    double getMonthlyInterestRate(){
+        return annualInterestRate/12;
+    }
+    double MonthlyInterest(){
+        return balance * (annualInterestRate/1200);
+    }
+    double withdraw(double amount){
+        return balance -=amount;
+    }
+    double deposit(double amount){
+        return balance += amount;
+    }
+    double deposit = 3000;
+
+
+}
+
+
+##CODETEST
+
+import java.util.Scanner;
+ public class AccountTest {
+    public static void main(String[] args) { 
+        Scanner scanner = new Scanner(System.in);
+        Account [] account = new Account[10];
+        for (int i = 0; i < account.length;i++){
+            account[i]=new Account(i,100,4.5);
+        }
+        while(true){
+            System.out.println("Enter an ID (0-9):");
+            int id=scanner.nextInt();
+            while (id < 0  || id > 9){
+                System.out.println("Invalid id. Please seclect the correct id");
+                id=scanner.nextInt();
+            }
+
+            int choice =0;
+            while(choice != 4){
+               System.out.println("Selecte your transaction");
+               System.out.println("1.View the current balance");
+               System.out.println("2.Withdraw ");
+               System.out.println("3.Deposit ");
+               System.out.println("4.Exit");
+               choice =scanner.nextInt();
+               switch (choice) {
+                 case 1:
+                 System.out.println("The balance is" + account[id].getBalance());
+                   break;
+
+                 case 2:
+                 System.out.println("Enter the amount to withdwaw :");
+                 double withdrawAmount = scanner.nextDouble();
+                  if(withdrawAmount > account[id].getBalance()){
+                     System.out.println("Amount insufficient");
+                     System.out.println("Do you want to cancel the withdraw?");
+                     withdrawAmount=scanner.nextDouble();
+                     String reponce = null;
+                     if(reponce.equals("no")){
+                        System.out.println("Enter a new amount");
+                        withdrawAmount=scanner.nextDouble();
+                        System.out.println("Withdraw succesful");
+                      }
+                      else {
+                        System.out.println("Withdraw canceled succesfully");
+                      }
+                    }
+                  else{
+                      account[id].withdraw(withdrawAmount);
+                     System.out.println("Withdraw succesful");
+                    }
+                    break;
+                 case 3:
+                 System.out.println("Enter an amount to deposit");
+                 double AmountDeposit=scanner.nextDouble();
+                 account[id].deposit(AmountDeposit);
+                 System.out.println("Deposit succesful");
+                 break; 
+
+                 case 4:
+                 System.out.println("Exit menu");
+                }
+            }
+        }
+    }
+}
