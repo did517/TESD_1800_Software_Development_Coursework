@@ -1,0 +1,216 @@
+public class GeometricObject {
+    private String color ;
+    private boolean filled;
+    private java.util.Date dateCreated;
+
+    public GeometricObject(){
+        dateCreated = new java.util.Date();
+    }
+    public GeometricObject(String color, boolean filled){
+        dateCreated= new java.util.Date();
+        this.color = color;
+        this.filled = filled;
+    }
+    public String getColor(){
+        return color;
+    }
+    public void setColor(String color){
+        this.color = color;
+    }
+    
+    public boolean isFilled(){
+        return filled;
+    }
+    public void setFilled(boolean filled){
+        this.filled = filled;
+    }
+    public java.util.Date getDateCreated(){
+        return dateCreated;
+    }
+    public String toString(){
+        return "created on " + dateCreated + "\ncolor:" + color + " and filled:" + filled;
+    }
+    
+}
+
+
+## RECTANGLE
+public class Rectangle1 extends GeometricObject{
+    private double width;
+    private double height;
+    public Rectangle1(){
+
+    }
+    public Rectangle1(double width, double height){
+        this.width =width;
+        this.height = height;
+
+    }
+    public Rectangle1(double width, double height, String color, boolean filled){
+        this.width = width;
+        this.height =height;
+        setColor(color);
+        setFilled(); 
+    }
+    public double getWidth(){
+       return width;
+    }
+    public void setWidth(double width){
+         this.width =width;
+    }
+    public double getHeight(){
+        return height;
+    }
+    public void setHeight(double height){
+        this.height= height;
+    }
+    public double getArea(){
+        return width * height;
+    }
+    public double getPerimeter(){
+        return 2 * ( width + height); 
+    }
+
+}
+
+
+##CIRCLE
+
+public class Circle1 extends GeometricObject {
+    private double radius;
+    public Circle1(){
+
+    }
+    public Circle1(double radius){
+        super();
+        this.radius = radius;
+    }
+    public Circle1(double radius, String color, boolean filled){
+        super(color, filled);
+        this.radius = radius;
+    }
+    public double getRadius(){
+        return radius;
+    }
+    public double getArea(){
+        return radius * radius * Math.PI;
+    }
+    public double getPerimeter(){
+        return 2 * radius * Math.PI;
+    }
+    public void printCirlce(){
+        System.out.println(toString() + " The circle is created" + getDateCreated() + " and the radius is " + radius);
+
+    }
+    public String toString(){
+        return " Circle WWW" + getColor() + super.toString();
+    }
+    
+    
+} 
+
+
+##TESTRECTANGLECIRCLE
+
+
+public class TestCirlceRactangle {
+    public static void main(String [] args){
+        Circle1 circle = new Circle1(1);
+        System.out.println("A circle " + circle.toString());
+        System.out.println("The radius is" + circle.getRadius());
+        System.out.println("The area is " + circle.getArea());
+
+        Rectangle1 rectangle = new Rectangle1(2,4);
+        System.out.println("\nA rectangle" + rectangle.toString());
+        System.out.println("The area is" + rectangle.getArea());
+        System.out.println("The perimeter is" + rectangle.getPerimeter());
+    }
+} 
+
+
+
+##TRIANGLE
+
+import java.util.Scanner;
+public class Triangle extends GeometricObject{
+    private double side1;
+    private double side2;
+    private double side3;
+    Scanner input = new Scanner(System.in);
+    public Triangle(){
+        double side1 =input.nextDouble();
+        double side2 =input.nextDouble();
+        double side3 =input.nextDouble();
+    }
+    public Triangle( double side1, double side2, double side3){
+        this.side1= side1;
+        this.side2=side2;
+        this.side3=side3;
+    }
+    public double getSide1(){
+        return side1;
+    }
+    public void setSide1( double side1){
+        this.side1 = side1;
+    }
+    public double getSide2(){
+
+        return side2;
+    }
+    public void setSide2( double side2){
+        this.side2 = side2;
+    }
+    public double getSide3(){
+        return side3;
+    }
+    public void setSide3( double side3){
+        this.side3= side3;
+    }
+    public double getArea(){
+        double s = (side1 + side2 + side3)/2;
+        return Math.sqrt( s* (s-side1)* (s-side2)*(s-side3));
+        
+    }
+    public double getPerimeter(){
+        return side1 + side2 + side3;
+    }
+    public String toString(){
+        return  "Triangle: side1 = " + side1 + " side2 = " + side2 + " side3 = " + side3;
+    }
+    
+}
+
+
+## TESTTRIANGLE
+
+
+
+import java.util.Scanner;
+public class TriangleTest {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Enter the sides of the triangle");
+        System.out.println("Side1 :");
+        double side1 = input.nextDouble();
+        System.out.println("Side2 :");
+        double side2 = input.nextDouble();
+        System.out.println("Side3 :");
+        double side3 = input.nextDouble();
+        System.out.println("Enter color :");
+        String color = input.next();
+        System.out.println("Is the triangle filled (True/False)?");
+        boolean isFilled = input.nextBoolean();
+        Triangle triangle = new Triangle(side1, side2, side3);
+        triangle.setColor(color);
+        triangle.setFilled(isFilled);
+        System.out.println("The area is" + triangle.getArea());
+        System.out.println("The perimeter is " + triangle.getPerimeter());
+        System.out.println("The color is " + triangle.getColor());
+        System.out.println("This triangle was created on " +triangle.getDateCreated()); 
+        input.close();
+
+    }
+    
+    
+}
