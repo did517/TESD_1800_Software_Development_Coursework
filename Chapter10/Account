@@ -12,7 +12,7 @@ public class Account {
     }
     public Account(){
         id =1122;
-        balance =20000;
+        balance =100;
         annualInterestRate=4.5;
         dateCreated= new Date();
     }
@@ -50,13 +50,12 @@ public class Account {
     double deposit(double amount){
         return balance += amount;
     }
-    double deposit = 3000;
-
 
 }
 
 
 ##CODETEST
+
 
 import java.util.Scanner;
  public class AccountTest {
@@ -92,10 +91,9 @@ import java.util.Scanner;
                  double withdrawAmount = scanner.nextDouble();
                   if(withdrawAmount > account[id].getBalance()){
                      System.out.println("Amount insufficient");
-                     System.out.println("Do you want to cancel the withdraw?");
-                     withdrawAmount=scanner.nextDouble();
-                     String reponce = null;
-                     if(reponce.equals("no")){
+                     System.out.println("Do you want to cancel the withdraw?(yes/no)");
+                     String responce =scanner.next();
+                     if(responce.equals("no")){
                         System.out.println("Enter a new amount");
                         withdrawAmount=scanner.nextDouble();
                         System.out.println("Withdraw succesful");
@@ -108,17 +106,24 @@ import java.util.Scanner;
                       account[id].withdraw(withdrawAmount);
                      System.out.println("Withdraw succesful");
                     }
+                    System.out.println("You withdrew :" + withdrawAmount);
+                    System.out.println("New balance :" + account[id].getBalance());
                     break;
                  case 3:
                  System.out.println("Enter an amount to deposit");
                  double AmountDeposit=scanner.nextDouble();
                  account[id].deposit(AmountDeposit);
-                 System.out.println("Deposit succesful");
+                 System.out.println("You deposited:" + AmountDeposit);
+                 System.out.println("New balance :" + account[id].getBalance());
                  break; 
 
                  case 4:
                  System.out.println("Exit menu");
                 }
+            }
+        }
+    }
+ }
             }
         }
     }
