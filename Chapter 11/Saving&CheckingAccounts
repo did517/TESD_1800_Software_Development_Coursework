@@ -1,0 +1,73 @@
+##SAVING ACCOUNT
+
+
+public class SavingAccount extends Account {
+    public SavingAccount( int id,  double balance, double annualInterestRate){
+        super(id, balance, annualInterestRate);
+    }
+    public SavingAccount(){
+        
+    }
+    public void setwithdraw(double amount){
+        if(amount<=getBalance()){
+            super.withdraw(amount);
+        }
+        else{
+            System.out.println("Insufficient funds in saving account");
+
+        } 
+    }
+    public String toString(){
+       return "Saving account: ID ="+ getId() + " Balance =" + getBalance();
+    }
+   
+}
+
+
+##CHECKING ACCOUNT
+
+
+public class CheckingAccount extends Account {
+    private double overdraftLimit;
+    public CheckingAccount(int id, double balance, double annualInterestRate,double overdraftLimit){
+        super(id,balance,annualInterestRate);
+        this.overdraftLimit= overdraftLimit;
+    }
+    public CheckingAccount(){
+
+    }
+    double getOverdraftLimit(){
+        return overdraftLimit;
+    }
+    public void setOverdraftLimit( double overdraftLimit){
+        this.overdraftLimit= overdraftLimit;
+    }
+    public void setWithdraw( double amount){
+        if(getBalance()-amount >= -overdraftLimit){
+            super.withdraw(amount);
+        }
+        else{
+            System.out.println("Transaction declined: Overdraft limit exceed");
+        }
+    }
+    public String toString(){
+        return "Checking account : ID =" + getId() + " Balance :" + getBalance() + "Overdraft Limit =" + overdraftLimit;
+    }
+}
+
+
+##SAVING & CHECKING ACCOUNTS
+
+
+public class AccountCheckingSavingTest {
+    public static void main(String [] args){
+        Account account= new Account(6, 700, 4.0);
+        CheckingAccount checking = new CheckingAccount(7, 98000, 4.0, 50000);
+        SavingAccount saving= new SavingAccount(9, 100000, 4.0);
+        System.out.println(account.toString());
+        System.out.println(checking.toString());
+        System.out.println(saving.toString());
+
+    }
+    
+}
