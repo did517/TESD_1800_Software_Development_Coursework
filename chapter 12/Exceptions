@@ -1,0 +1,102 @@
+import java.util.Scanner;
+public class Quotient{
+    public static int quotient (int number1, int number2){
+        if (number2 == 0)
+            throw new ArithmeticException("Divisor cannot be zero"); 
+              return ( number1 / number2);
+    }
+    public static void main(String [] args){
+        Scanner input = new Scanner(System.in);
+        //prompt the user to enter two integers
+        System.out.println("Enter two integers :");
+        int number1 = input.nextInt();
+        int number2 = input.nextInt();
+        try{
+            int result = quotient (number1, number2); 
+              System.out.println( number1 + "/" + number2 + " is " + result);
+        }
+        catch(Exception ex){
+            System.out.println("Exception : an integer cannot be divided by zero"); 
+        }
+     System.out.println("Execution continues...");
+    }
+    
+}
+
+
+
+public class CircleWithRadiusException {
+    private double radius;
+    private static int numberOfObjects = 0;
+    public CircleWithRadiusException(){
+        this(1.0);
+    }
+    public CircleWithRadiusException(double newRadius){
+        try{
+            setRadius(newRadius);
+            numberOfObjects++;
+        }
+        catch(InvalidRadiusException ex){
+            ex.printStackTrace();
+        }
+    }
+    public void setRadius(double newRadius) 
+        throws InvalidRadiusException{
+            if(newRadius >=0){
+                radius = newRadius;
+            }
+            else {
+                throw new InvalidRadiusException(newRadius); 
+            }
+        }
+    public double getRadius()   {
+        return radius;
+    }
+    public double findArea(){
+        return radius * radius * Math.PI; 
+    }
+
+    
+    
+}
+
+
+
+
+public class RadiusExeptionTest {
+    public static void main(String[] args) { 
+
+        CircleWithRadiusException c1 = new CircleWithRadiusException();
+        System.out.println("Area of c1 is :" + c1.findArea()); 
+
+        CircleWithRadiusException c2 = new CircleWithRadiusException(120);
+        System.out.println("Area of c2 is :" + c2.findArea());
+        
+        CircleWithRadiusException c3 = new CircleWithRadiusException(-59);
+        System.out.println("Area of c3 is :" + c3 .findArea());
+    }
+    
+}
+
+
+
+import java.util.Scanner;
+public class ArrayIndexOutOfBoundsException {
+    public static void main(String [] args){
+        int [] numbers = new int [100];
+        for (int i = 0 ; i < numbers.length; i++){
+            numbers[i] =(int)(Math.random()*1000);
+        }
+        Scanner input=new Scanner(System.in);
+        System.out.println("Enter an index (0 to 99):");
+        int index = input.nextInt();
+        try{
+            System.out.println(" The element at index" + index + " is " + numbers[index]);
+        }
+        catch(Exception ex){
+            System.out.println("Out of Bounds");
+        }
+        input.close();
+    }
+
+}
