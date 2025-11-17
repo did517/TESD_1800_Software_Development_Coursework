@@ -1,0 +1,10 @@
+public interface Cloneable {
+
+    Octagon howToClone();
+}
+
+
+public interface Comparable {
+
+    void howToCompare();
+}
