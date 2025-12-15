@@ -1,0 +1,79 @@
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+public class ColorText extends Application {
+    TextPane textPane = new TextPane();
+    public void start(Stage primaryStage){
+        HBox hBox = new HBox();
+        hBox.setSpacing(5);
+        hBox.setAlignment(Pos.CENTER);
+        Button btLeft = new Button("<=");
+        Button btRight = new Button("=>");
+        btLeft.setOnAction(e-> textPane.moveLeft());
+        btRight.setOnAction(e-> textPane.moveRight());
+        hBox.getChildren().addAll(btLeft,btRight);
+
+        RadioButton rbRed = new RadioButton("Red");
+        RadioButton rbYellow = new RadioButton("Yellow");
+        RadioButton rbBlack = new RadioButton("Black");
+        RadioButton rbOrange = new RadioButton("Orange");
+        RadioButton rbGreen = new RadioButton("Green");
+        ToggleGroup group = new ToggleGroup();
+        rbRed.setToggleGroup(group);
+        rbYellow.setToggleGroup(group);
+        rbBlack.setToggleGroup(group);
+        rbOrange.setToggleGroup(group);
+        rbGreen.setToggleGroup(group);
+        rbBlack.setSelected(true);
+        rbRed.setOnAction(e-> textPane.setColor(Color.RED));
+        HBox colorBox = new HBox(10);
+        colorBox.setAlignment(Pos.CENTER);
+        colorBox.getChildren().addAll(rbRed, rbYellow, rbBlack, rbOrange, rbGreen);
+        BorderPane borderPane = new BorderPane();
+        borderPane.setCenter(textPane);
+        borderPane.setBottom(hBox);
+        borderPane.setAlignment(hBox,Pos.CENTER);
+        borderPane.setTop(colorBox);    
+        
+       Scene scene = new Scene(borderPane, 450, 150);
+       primaryStage.setTitle("RadioButton");
+       primaryStage.setScene(scene);
+       primaryStage.show();    
+    }
+            
+    public static void main(String[] args) {
+        launch(args);
+    }
+    public class TextPane extends StackPane {
+        Text text = new Text("Programming is fun");
+        private TextPane(){
+            
+            text.setFont(Font.font(20));
+            text.setFill(Color.BLACK);
+            getChildren().add(text);
+            
+        }
+        public void moveLeft(){
+            text.setTranslateX(text.getTranslateX()-10);
+        }
+        public void moveRight(){
+            text.setTranslateX(text.getTranslateX()+10);
+        }
+        public void setColor(color color){
+            text.setFill(color);
+        }
+    }
+
+    
+}
