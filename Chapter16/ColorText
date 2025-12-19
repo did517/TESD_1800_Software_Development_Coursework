@@ -37,6 +37,10 @@ public class ColorText extends Application {
         rbGreen.setToggleGroup(group);
         rbBlack.setSelected(true);
         rbRed.setOnAction(e-> textPane.setColor(Color.RED));
+        rbYellow.setOnAction(e-> textPane.setColor(Color.YELLOW));
+        rbBlack.setOnAction(e-> textPane.setColor(Color.BLACK));
+        rbOrange.setOnAction(e-> textPane.setColor(Color.ORANGE));
+        rbGreen.setOnAction(e-> textPane.setColor(Color.GREEN));
         HBox colorBox = new HBox(10);
         colorBox.setAlignment(Pos.CENTER);
         colorBox.getChildren().addAll(rbRed, rbYellow, rbBlack, rbOrange, rbGreen);
@@ -70,7 +74,7 @@ public class ColorText extends Application {
         public void moveRight(){
             text.setTranslateX(text.getTranslateX()+10);
         }
-        public void setColor(color color){
+        public void setColor(Color color){
             text.setFill(color);
         }
     }
