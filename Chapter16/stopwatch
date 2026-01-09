@@ -1,0 +1,73 @@
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.io.File;
+
+public class StopWacth extends Application {
+
+    private Timeline timeline;
+    private int seconds;
+
+
+    public void start(Stage stage) {
+
+        TextField input = new TextField();
+        input.setPromptText("Enter seconds");
+
+        Label display = new Label("0");
+
+        HBox root = new HBox(10, input, display);
+
+        // Musique
+        Media media = new Media(new File("alarm.mp3").toURI().toString());
+        MediaPlayer player = new MediaPlayer(media);
+
+        // Quand l'utilisateur appuie sur Enter
+        input.setOnAction(e -> {
+            try {
+                seconds = Integer.parseInt(input.getText());
+                display.setText(String.valueOf(seconds));
+
+                if (timeline != null) {
+                    timeline.stop();
+                }
+
+                timeline = new Timeline(
+                    new KeyFrame(Duration.seconds(1), ev -> {
+                        seconds--;
+                        display.setText(String.valueOf(seconds));
+
+                        if (seconds <= 0) {
+                            timeline.stop();
+                            player.setCycleCount(MediaPlayer.INDEFINITE);
+                            player.play();
+                        }
+                    })
+                );
+
+                timeline.setCycleCount(Timeline.INDEFINITE);
+                timeline.play();
+
+            } catch (NumberFormatException ex) {
+                display.setText("Invalid");
+            }
+        });
+
+        stage.setScene(new Scene(root, 300, 100));
+        stage.setTitle("Countdown");
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
