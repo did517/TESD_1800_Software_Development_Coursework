@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html language="english">
+<head>
+   <!-- //error
+   New Perspectives on HTML5 and CSS3, 8th Edition
+   Tutorial 1
+   Coding Challenge 4
+   
+   Author:Dimercia
+   Date:28/01/2026
+   Filename: code1-4.html
+   -->
+   <meta charset="utf-8">
+   <title>Coding Challenge 1-4</title>
+   <link href="code1-4styles.css" rel="stylesheet" /> 
+</head>
+<body>
+   <article>
+   <h1>The Teton Crest Trail</h1>
+   <img src="code1-4_image.png" alt="" align="right" />
+   <p>The Teton Crest Trail is an awe-inspiring 40-mile hike along the Grand Teton
+      range in western Wyoming. The trail extends from Phillips Pass on the border
+      of the Bridger Teton National Forest and proceeds north to String Lake
+      in Grand Teton National Park.</p>
+   <p>You can access the Teton Crest Trail from the Granite Canyon Trail or from
+      the aerial tramway in Jackson Hole, which provides a gradual ascent to the
+      Teton range. There are several access trails adjacent from national forest
+      lands of varying degrees of difficulty.</p>
+   <p>Along the trail, enjoy an exicting traverse of the Death Canyon Shelf with a difficult 
+      climb over Mount Meek Pass, Hurrican Pass, and the Paintbrush Divide. This is a challenging
+      3- to 4-day trip, so you must pack sufficient supplies and a water purifier. The Teton 
+      Crest Trail goes through grizzly bear country, so bear spray is a must.</p>
+   
+   </article>
+   <ul>
+      <li><strong>Distance </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;40 miles</li>
+      <li><strong>Elevation Gain</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10,779 feet</li>
+      <li><strong>Permit Required</strong>&nbsp;&nbsp;&nbsp;Yes</li>
+      <li><strong>Difficulty Rating</strong>&nbsp;&nbsp;&nbsp;4 (strenuous)</li>
+   </ul>
+</body>
+</html>
+
+
+
+
+@charset "utf-8";
+
+/* 
+
+   New Perspectives on HTML5 and CSS3, 8th Edition
+   Tutorial 1
+   Coding Challenge 4 Stylesheet
+   
+   Filename: code1-4styles.css
+*/
+
+html {
+   background: linear-gradient(to right top, white 35%, rgb(11, 11, 111) 50%, white 65%);
+}
+body {
+   max-width: 900px;
+   width: 90%;
+   margin: 20px auto;
+   padding: 0px 20px;
+   background: white;
+}
+
+h1 {
+   font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
+   font-size: 2.6em;
+   padding-top: 10px;
+   letter-spacing: 0.13em;
+}
+
+img {
+   display: block;
+   float: right;
+   width: 370px;
+   margin: 0px 0px 10px 0px;
+   box-shadow: 3px 3px 20px black;
+}
+
+
+p {
+   font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+   font-size: 1.2em;
+   line-height: 1.4em;
+}
+ul {
+   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+   line-height: 2.5em;
+   margin-left: 40px;
+   padding-bottom: 20px;
+   list-style-type: circle;
+}
+ul li strong {
+   display: inline-block;
+   width: 150px;
+}
